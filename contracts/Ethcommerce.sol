@@ -95,5 +95,9 @@ contract Ethcommerce {
 
   event Buy(address buyer, uint256 orderId, uint256 itemId);
 
+ function withdraw() public onlyOwner {
+        (bool success, ) = owner.call{value: address(this).balance}("");
+        require(success);
+    }
 
 }
